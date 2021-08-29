@@ -20,7 +20,7 @@ const dispaly = (meals) =>{
            <img src="${meal.strMealThumb}" class="card-img-top w-100 h-25" alt="...">
              <div class="card-body">
                <h5 class="card-title">${meal.strMeal}</h5>
-               <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+               <p class="card-text">${meal.strInstructions.slice(0, 100)}</p>
              </div>
          </div>
   `;
