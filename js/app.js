@@ -11,12 +11,12 @@ const searchButton = () =>{
 const dispaly = (meals) =>{
   console.log(meals)
   meals.forEach(meal => {
-    console.log(meal);
+    // console.log(meal);
   const searchid = document.getElementById('searchid');
   const searchdiv = document.createElement('div');
   searchdiv.classList.add('col');
   searchdiv.innerHTML =`
-         <div class="card">
+         <div onclick="dispalyid(${meal.idMeal})" class="card">
            <img src="${meal.strMealThumb}" class="card-img-top w-100 h-25" alt="...">
              <div class="card-body">
                <h5 class="card-title">${meal.strMeal}</h5>
@@ -26,4 +26,12 @@ const dispaly = (meals) =>{
   `;
   searchid.appendChild(searchdiv);
   });
+}
+
+const dispalyid = (mealid) =>{
+  // console.log(meal);
+  const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`
+  fetch(url)
+  .then(res => res.json())
+  .then(data => console.log(data));
 }
