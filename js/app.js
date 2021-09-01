@@ -9,9 +9,7 @@ const searchButton = () =>{
 }
 
 const dispaly = (meals) =>{
-  console.log(meals)
   meals.forEach(meal => {
-    // console.log(meal);
   const searchid = document.getElementById('searchid');
   const searchdiv = document.createElement('div');
   searchdiv.classList.add('col');
@@ -33,5 +31,22 @@ const dispalyid = (mealid) =>{
   const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`
   fetch(url)
   .then(res => res.json())
-  .then(data => console.log(data));
+  .then(data => mealdetail(data.meals[0]));
+}
+
+const mealdetail = (meal) =>{
+  const divcard = document.getElementById('divcard');
+  const div = document.createElement('div');
+  div.classList.add('card');
+  div.innerHTML =`
+  <div class="card">
+        <img src="${meal.strMealThumb}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">${meal.strMeal}</h5>
+          <p class="card-text">${meal.strInstructions.slice(0, 100)}</p>
+          <a href="${meal.strYoutube}" class="btn btn-primary">Youtube link</a>
+        </div>
+  </div>
+  `;
+  divcard.appendChild(div);
 }
