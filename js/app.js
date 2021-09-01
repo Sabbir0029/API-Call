@@ -2,10 +2,15 @@ const searchButton = () =>{
   const searchFild = document.getElementById('searchFild');
   const searchText = searchFild.value;
   searchFild.value = '';
-  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
-  fetch(url)
-  .then(res => res.json())
-  .then(data => dispaly(data.meals));
+  if(searchText == ''){
+    console.log('Enter your any key')
+  }
+  else{
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => dispaly(data.meals));
+  }
 }
 
 const dispaly = (meals) =>{
